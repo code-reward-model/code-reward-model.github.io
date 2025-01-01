@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Dynamic Scaling of Unit Tests for Code Reward Modeling">
+  <meta name="keywords" content="SpreadsheetBench, spreadsheet-manipulation, benchmark, large-language-model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic Scaling of Unit Tests for Code Reward Modeling</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EXCB9YRX9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0EXCB9YRX9');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.table.min.css">
+  <!--  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="./stylesheets/layout.css">
+  <link rel="stylesheet" href="./stylesheets/index.css">
+
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://github.com/RUCKBReasoning">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://tablellm.github.io/">
+              TableLLM
+            </a>
+            <a class="navbar-item" href="https://spreadsheetbench.github.io/">
+              SpreadsheetBench
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Dynamic Scaling of Unit Tests for Code Reward Modeling
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/Kaka23333">Zeyao Ma</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <a href="">Xiaokang Zhang</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <a href="">Jing Zhang</a><sup>†1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Jifan Yu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Sijia Luo</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Jie Tang</a><sup>2</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Renmin University of China,</span>
+              <span class="author-block"><sup>2</sup>Tsinghua University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Model Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/KAKA22/CodeRM-8B"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-cube"></i>
+                    </span>
+                    <span>Model</span>
+                    </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/RUCKBReasoning/CodeRM"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/KAKA22/CodeRM-UnitTest"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+
+        <img src="static/images/scale_on_diff_sol.png">
+
+        <p>
+          Figure 1: Scaling the quantities of unit tests for majority voting leads 
+          to improvements in performance across different policy models and reward 
+          models. Policy refers to the model that produces code solutions, while 
+          reward denotes the model that generates unit tests.
+        </p>
+
+        <img src="static/images/scale_on_diff_diff.png">
+
+        <p>
+          Figure 2: The improvements of best-of-N performance on problems of different 
+          difficulties, employing Llama3-8B as the policy model and GPT-4o as the 
+          reward model. Quintile 1 has the highest pass rate, while Quintile 2 has the 
+          lowest pass rate.
+        </p>
+
+        <br/>
+
+        <p>
+          We explore the impact of scaling unit tests to enhance code reward signal 
+          quality across different LLMs and unit test scales. The result reveals a 
+          positive correlation between the number of unit tests and reward signal 
+          quality, with greater benefits observed in more challenging problems.
+          In light of these observations, we train a unit test generator and employ 
+          dynmaic scaling over problem of different difficulties to facilitate 
+          efficient and high-quality unit test scaling.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Current large language models (LLMs) often struggle to produce accurate 
+              solutions on the first attempt for code generation. Prior research 
+              tackles this challenge by generating multiple candidate solutions and 
+              validating them with LLM-generated unit tests. The execution results of 
+              unit tests serve as reward signals to identify correct solutions.
+              As LLMs always confidently make mistakes, these unit tests are not 
+              reliable, thereby diminishing the quality of reward signals. Motivated 
+              by the observation that scaling the number of solutions improves LLM 
+              performance, we explore the impact of scaling unit tests to enhance 
+              reward signal quality. Our pioneer experiment reveals a positive 
+              correlation between the number of unit tests and reward signal quality, 
+              with greater benefits observed in more challenging problems. Based on 
+              these insights, we propose CodeRM-8B, a lightweight yet effective unit 
+              test generator that enables efficient and high-quality unit test scaling.
+              Additionally, we implement a dynamic scaling mechanism that adapts the 
+              number of unit tests based on problem difficulty, further improving 
+              efficiency. Experimental results show that our approach significantly 
+              improves performance across various models on three benchmarks (e.g., 
+              with gains of 18.43% for Llama3-8B and 3.42% for GPT-4o-mini on 
+              HumanEval Plus).
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Example. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Efficient and High-quality Unit Test Scaling</h2>
+          <div class="content has-text-justified">
+            <p>
+              In light of the observations of unit test scaling, we propose CodeRM-8B, 
+              a small yet effective unit test generator designed to enable efficient 
+              and high-quality unit test scaling. To this end, we introduce a synthetic 
+              data pipeline for generating high-quality unit tests and model training.
+            </p>
+
+            <p>
+              Additionally, as scaling unit tests proves to be more effective for harder 
+              problems, we implement a dynamic scaling strategy that adapts to problems 
+              of varying difficulty to further improve efficiency. Specifically, we train
+              a problem difficulty classifier and employ a greedy algorithm to allocate
+              computational resources dynamically, prioritizing harder problems.
+            </p>
+
+            <img src="static/images/main.png">
+
+            <p>
+              Figure 3: Overview for efficient and high-quality unit test scaling. First, we 
+              train a lightweight unit test generator based on high-quality synthetic data. 
+              Subsequently, we employ dynamic unit test scaling to further improve efficiency.
+            </p>
+
+          </div>
+        </div>
+      </div>
+      <!--/ Example. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Experiments. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Experiments</h2>
+          <div class="content has-text-justified">
+            <p>
+              We conduct extensive experiments to evaluate the effectiveness of CodeRM-8B on three 
+              widely used benchmarks (i.e., HumanEval Plus, MBPP Plus and LiveCodeBench) and four 
+              LLMs (Llama3-8B, Llama3-70B, GPT-3.5, GPT-4o-mini) with varying parameter scales for 
+              solution generation.
+            </p>
+            <p>
+              The results demonstrate that scaling unit tests with CodeRM-8B significantly improves 
+              the performance of smaller models (e.g., a performance gain of 18.43% on HumanEval Plus 
+              for Llama3-8B). Moreover, CodeRM-8B enhances the performance of significantly larger 
+              models or even proprietary models (e.g., a 4.95% gain for Llama3-70B and 3.42% for 
+              GPT-4o-mini on HumanEval Plus).
+            </p>
+
+            <div style="text-align: center;">
+              <img src="static/images/result.png", width="75%">
+            </div>
+
+            <p>
+              Table 1: The main result of our approach and other baselines over three code generation 
+              benchmarks. GPT-4o-m stands for GPT-4o-mini. The improvements are calculated between 
+              methods and vanilla. The top two performances for each dataset and policy model are 
+              marked in bold and underlined.
+            </p>
+
+            <p>
+              We also evaluate the performance of dynamic unit test scaling on two benchmarks. By 
+              leveraging a trained problem difficulty classifier and dynamically allocating 
+              computation budgets, this approach brings additional performance improvements at a 
+              fixed computational cost.
+            </p>
+
+            <img src="static/images/dynamic_scale.png">
+
+            <p>
+              Figure 4: est-of-N performance comparison under unit test scaling with three 
+              computation budget allocation strategies: dynamic allocation with gold pass rate, 
+              dynamic allocation with predicted pass rate, and equal allocation.
+            </p>
+
+          </div>
+        </div>
+      </div>
+      <!--/ Experiments. -->
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-body">
+        <h2 class="title">Contact</h2>
+        <p>
+          If you have any questions, we encourage you to either create Github issues 
+          or get in touch with us at <a href="mailto:zeyaoma@gmail.com">zeyaoma@gmail.com</a>.
+        </p>
+
+        <h2 class="title">BibTeX</h2>
+        <pre><code></code></pre>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="">
+          <i class="fas fa-file-pdf" style="color:white"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/RUCKBReasoning/CodeRM" class="external-link" disabled>
+          <i class="fab fa-github" style="color:white"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website,
+              we just ask that you link back to this page in the footer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
